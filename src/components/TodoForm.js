@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {v4 as uuid} from "uuid";
+import { Button, Form,  } from "react-bootstrap";
 
 function TodoForm({ addTodo }) {
     const [todo, setTodo] = useState({
@@ -22,15 +23,21 @@ function TodoForm({ addTodo }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                name="task"
-                type="text"
-                value={todo.task}
-                onChange={handleTaskInputChange}
-            />
-            <button type="submit">submit</button>
-        </form>
+        
+        <Form className="row row-cols-lg-auto g-3 justify-content-center" onSubmit={handleSubmit}>
+            <Form.Group className="col-12 ">
+                <Form.Control
+                    name="task"
+                    type="text"
+                    value={todo.task}
+                    onChange={handleTaskInputChange}
+                />
+            </Form.Group>
+            <div className="col-12">
+                <Button variant="primary" type="submit">submit</Button>
+            </div>
+        </Form>
+          
     )
 }
 

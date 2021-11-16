@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Col, CloseButton, ListGroup, Form } from "react-bootstrap";
 
 function Todo({ todo, toggleComplete, removeTodo }) {
     function handleCheckboxClick() {
@@ -10,10 +11,24 @@ function Todo({ todo, toggleComplete, removeTodo }) {
     }
 
     return (
-        <div style={{ display: "flex" }}>
-            <input type="checkbox" onClick={handleCheckboxClick} />
-            <li style={{ color: "white", textDecoration: todo.completed ? "line-through" : null}}>{todo.task}</li>
-            <button onClick={handleRemoveClick}>X</button>
+        <div className="row mb-3 mt-3">
+            <div>
+                <Form>
+                    <Row className="align-items-center">
+                        <Col xs="auto" className="my-1">
+                            <Form.Check onClick={handleCheckboxClick} />
+                        </Col>
+                        <Col xs="auto" className="my-1">
+                            <ListGroup variant="flush">
+                                <ListGroup.Item style={{ textDecoration: todo.completed ? "line-through" : null}}>{todo.task}</ListGroup.Item>
+                            </ListGroup>
+                        </Col>
+                        <Col xs="auto" className="my-1">
+                            <CloseButton variant="danger" size="sm" onClick={handleRemoveClick} />
+                        </Col>
+                    </Row>
+                </Form>
+            </div>
         </div>
     )
 }

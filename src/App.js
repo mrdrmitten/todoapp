@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList"
+import Container from "react-bootstrap/Container";
 
 
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
@@ -43,13 +44,13 @@ function App() {
     }
 
     return (
-            <div className="App">
-                <header className='App-header'>
-                    <p>React Todo</p>
+            <Container>
+                    <h1 className='mb-5 mt-5 text-center'>React Todo List</h1>
+                    <p className='text-muted text-center'>Please enter your Todos Below</p>
                     <TodoForm addTodo={addTodo} />
                     <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
-                </header>
-            </div>
+                
+            </Container>
         );
     }
 
