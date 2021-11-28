@@ -34,7 +34,7 @@ function TodoForm({ addTodo }) {
                 />
             </Form.Group>
             <div className="col-12">
-                <Button variant="primary" type="submit">submit</Button>
+                <Button variant="primary" type="submit">Submit</Button>
             </div>
         </Form>
           

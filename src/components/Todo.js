@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, CloseButton, ListGroup, Form } from "react-bootstrap";
+import { Row, Col, Button, ListGroup, Form } from "react-bootstrap";
 
 function Todo({ todo, toggleComplete, removeTodo }) {
     function handleCheckboxClick() {
@@ -24,7 +24,7 @@ function Todo({ todo, toggleComplete, removeTodo }) {
                             </ListGroup>
                         </Col>
                         <Col xs="auto" className="my-1">
-                            <CloseButton variant="danger" size="sm" onClick={handleRemoveClick} />
+                            <Button className='btn btn-danger' size="sm" onClick={handleRemoveClick}>X</Button>
                         </Col>
                     </Row>
                 </Form>

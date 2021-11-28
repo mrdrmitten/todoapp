@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { useDarkMode } from './components/useDarkMode';
+import { GlobalStyles } from './components/globalStyles';
+import { lightTheme, darkTheme } from './components/Themes';
+import Toggle from './components/Toggler';
 import './App.css';
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList"
@@ -9,6 +14,9 @@ const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
 function App() {
     const [todos, setTodos] = useState([]);
+    const [theme, themeToggler, mountedComponent] = useDarkMode();
+
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
     useEffect(() => {
         const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -42,15 +50,19 @@ function App() {
     function removeTodo(id) {
         setTodos(todos.filter(todo => todo.id !== id));
     }
-
+    if(!mountedComponent) return <div/>
     return (
-            <Container>
-                    <h1 className='mb-5 mt-5 text-center'>React Todo List</h1>
-                    <p className='text-muted text-center'>Please enter your Todos Below</p>
-                    <TodoForm addTodo={addTodo} />
-                    <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
-                
-            </Container>
+            <ThemeProvider theme={themeMode}>
+                <Container>
+                    <GlobalStyles />
+                        <h1 className='mb-5 mt-5 text-center'>React Todo List</h1>
+                        <Toggle theme={theme} toggleTheme={themeToggler} />
+                        <p className='text-muted text-center'>Please enter your Todos Below</p>
+                        <TodoForm addTodo={addTodo} />
+                        <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
+                    
+                </Container>
+            </ThemeProvider>
         );
     }
 
