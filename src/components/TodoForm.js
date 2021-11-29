@@ -23,8 +23,9 @@ function TodoForm({ addTodo }) {
     }
 
     return (
-        
-        <Form className="row row-cols-lg-auto g-3 justify-content-center" onSubmit={handleSubmit}>
+        <>
+        <p className='text-muted text-center'>Please enter your Todos Below</p>
+        <Form className="row row-cols-lg-auto mb-5 g-3 justify-content-center" onSubmit={handleSubmit}>
             <Form.Group className="col-12 ">
                 <Form.Control
                     name="task"
@@ -34,10 +35,10 @@ function TodoForm({ addTodo }) {
                 />
             </Form.Group>
             <div className="col-12">
-                <Button variant="primary" type="submit">Submit</Button>
-            </div>
+                <Button className="submitBtn" type="submit">Submit</Button>
+            </div> 
         </Form>
-          
+        </>
     )
 }
 

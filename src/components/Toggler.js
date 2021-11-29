@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { func, string } from 'prop-types';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -13,11 +15,23 @@ const Button = styled.button`
     }
 `;
 
-const Toggle = ({ theme, toggleTheme }) => {
+
+const Toggle = ({ theme, toggleTheme}) => {
+    const [isClicked, setIsClicked] = useState(false);
+    
+    function editFa() {
+        return setIsClicked(prev => !prev)
+    }
+
+    function clickFunc() {
+        toggleTheme();
+        editFa();
+    }
+
     return (
-        <div className="row row-cols-lg-auto justify-content-center mb-5">
-            <Button onClick={toggleTheme} >
-                Switch Theme
+        <div className="mt-2">
+            <Button onClick={clickFunc}>
+                <FontAwesomeIcon id={1} icon={isClicked ? faLightbulb : faMoon} />
             </Button>
         </div>
     )

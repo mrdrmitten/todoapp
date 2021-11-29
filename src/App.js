@@ -55,12 +55,10 @@ function App() {
             <ThemeProvider theme={themeMode}>
                 <Container>
                     <GlobalStyles />
-                        <h1 className='mb-5 mt-5 text-center'>React Todo List</h1>
                         <Toggle theme={theme} toggleTheme={themeToggler} />
-                        <p className='text-muted text-center'>Please enter your Todos Below</p>
+                        <h1 className='mb-2 mt-5 text-center'>React Todo List</h1>
                         <TodoForm addTodo={addTodo} />
-                        <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
-                    
+                        <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />  
                 </Container>
             </ThemeProvider>
         );
